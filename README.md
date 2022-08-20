@@ -13,6 +13,7 @@
  [![Watch the video](https://img.youtube.com/vi/p0IhX-XiiiQ/maxresdefault.jpg)](https://youtu.be/p0IhX-XiiiQ)
  
  Автор: VadRov
+ 
  Контакты:
  https://www.youtube.com/c/VadRov
  https://zen.yandex.ru/vadrov
