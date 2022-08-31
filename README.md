@@ -1,6 +1,6 @@
  Copyright (C) 2022, VadRov, all right reserved.
  
- Подключение аудио-ЦАП PCM5102A к микроконтроллеру STM32F4 по I2S с DMA. 
+ # Подключение аудио-ЦАП PCM5102A к микроконтроллеру STM32F4 по I2S с DMA. 
  Без HAL (на CMSIS и LL)
 
  Приведен пример подключения популярного аудио-ЦАП PCM5102A к дешевой плате разработки на 
@@ -12,13 +12,6 @@
  Показана работа с технической документацией на микроконтроллер при написании низкоуровневых драйверов устройств:
  [![Watch the video](https://img.youtube.com/vi/p0IhX-XiiiQ/maxresdefault.jpg)](https://youtu.be/p0IhX-XiiiQ)
  
- Автор: VadRov
- 
- Контакты:
- https://www.youtube.com/c/VadRov
- https://zen.yandex.ru/vadrov
- https://vk.com/vadrov
- https://t.me/vadrov_channel
- 
+ Автор: **VadRov**
 
- 
+Контакты: [Youtube](https://www.youtube.com/c/VadRov) [Дзен](https://zen.yandex.ru/vadrov) [VK](https://vk.com/vadrov) [Telegram](https://t.me/vadrov_channel)
