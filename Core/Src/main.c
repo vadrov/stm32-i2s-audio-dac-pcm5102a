@@ -52,11 +52,28 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+//#define STM32F411_PLLI2S
+#define LL_RCC_PLLI2S_ConfigDomain_I2S	LL_RCC_PLLI2S_ConfigDomain_I2S__
+static void LL_RCC_PLLI2S_ConfigDomain_I2S__(uint32_t Source, uint32_t PLLM, uint32_t PLLN, uint32_t PLLR)
+{
+	__IO uint32_t *pReg = (__IO uint32_t *)((uint32_t)((uint32_t)(&RCC->PLLCFGR) + (Source & 0x80U)));
+	MODIFY_REG(*pReg, RCC_PLLCFGR_PLLSRC, (Source & (~0x80U)));
+#if defined(STM32F411_PLLI2S)
+	MODIFY_REG(RCC->PLLI2SCFGR, 0x3FUL, PLLM); //stm32f411x
+#else
+	MODIFY_REG(RCC->PLLCFGR, RCC_PLLCFGR_PLLM, PLLM); //stm32f401x
+#endif
+	MODIFY_REG(RCC->PLLI2SCFGR, RCC_PLLI2SCFGR_PLLI2SN | RCC_PLLI2SCFGR_PLLI2SR, PLLN << RCC_PLLI2SCFGR_PLLI2SN_Pos | PLLR);
+}
 //инициализация I2S3
 static void I2S3_Init(void)
 {
 	LL_I2S_InitTypeDef I2S_InitStruct = {0};
 	LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	//источник тактирования i2s - модуль PLL
+	LL_RCC_SetI2SClockSource(LL_RCC_I2S1_CLKSOURCE_PLLI2S);
+
 	//включаем тактирование spi3/i2s3
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI3);
 	//включаем тактирование порта B
@@ -346,3 +363,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
